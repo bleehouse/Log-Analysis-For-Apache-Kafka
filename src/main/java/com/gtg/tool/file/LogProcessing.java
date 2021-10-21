@@ -6,12 +6,26 @@ import java.io.File;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.text.DateFormat;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
+import java.time.format.DateTimeParseException;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
+
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
+import com.gtg.tool.runner.BrokerAnalysis;
 
 public class LogProcessing {
 
 	private static String reportFileName;
+	
+	private static final Logger logger = LoggerFactory.getLogger(LogProcessing.class);
 
 	public String getReportFileName() {
 		return reportFileName;
@@ -53,12 +67,32 @@ public class LogProcessing {
 		return pList;
 	}
 	
-	public static String readFile (String logFilePath) {
+	
+
+	private static boolean isValidDate(String input) {
+
+		SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+		try {
+	          format.parse(input);
+	          return true;
+	     }
+	     catch(ParseException e){
+	          return false;
+	     }
+	}
+	
+	public static String readFile (String logFilePath, String startdate) {
 		
 		BufferedReader reader;
 		String rtnStr = "";
 		
 		try {
+
+			DateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+//			String firstStr = "2021-03-05 08:31:04";
+			
+			startdate = startdate + " 00:00:00";
+			
 			reader = new BufferedReader(new FileReader(logFilePath));
 			String line = reader.readLine();
 			int lineNumber = 0;
@@ -70,13 +104,31 @@ public class LogProcessing {
 			
 			while (line != null) {
 				
-				for (Pattern pObj : pList) { 		      
-					if(line.indexOf(pObj.getPattern())>-1) {
-						pObj.setCnt(pObj.getCnt() + 1);
-						writeLog( "["+ lineNumber + "] : " + line + "\n");
-						cnt++;
+					for (Pattern pObj : pList) { 		      
+						if(line.indexOf(pObj.getPattern())>-1) {
+							
+							String secondStr = line.substring(1, 20);
+
+							boolean before = false;
+							
+							if (isValidDate(secondStr)) {
+								Date first = sdf.parse(startdate);
+								Date second = sdf.parse(secondStr);
+								before = (first.before(second));
+								
+								if (before == true) {
+									pObj.setCnt(pObj.getCnt() + 1);
+									writeLog( "["+ lineNumber + "] : " + line + "\n");
+									cnt++;
+								}
+								
+							} else {
+								pObj.setCnt(pObj.getCnt() + 1);
+								writeLog( "["+ lineNumber + "] : " + line + "\n");
+								cnt++;
+							}
+						}
 					}
-				}
 
 				lineNumber++;
 				line = reader.readLine();
@@ -101,14 +153,17 @@ public class LogProcessing {
 			reader.close();
 		} catch (IOException e) {
 			e.printStackTrace();
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
 		}
 		return rtnStr;
 	}
 	
-	public static void checklog(String path) {
+	public static void checklog(String path, String startdate) {
       try {
 
-    	analysis(path);
+    	analysis(path, startdate);
       	
       } catch (Exception e) {
         System.err.println(e.getMessage());
@@ -116,7 +171,7 @@ public class LogProcessing {
 	}
 	
 	
-    public static String analysis(String path) {
+    public static String analysis(String path, String startdate) {
 
         File root = new File(path);
         File[] list = root.listFiles();
@@ -127,10 +182,10 @@ public class LogProcessing {
 
         for ( File f : list ) {
             if ( f.isDirectory() ) {
-            	analysis( f.getAbsolutePath());
+            	analysis( f.getAbsolutePath(), startdate);
             }
             else {
-            	resStr = resStr + readFile(f.getAbsoluteFile().toString());
+            	resStr = resStr + readFile(f.getAbsoluteFile().toString(), startdate);
             }
         }
 

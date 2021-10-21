@@ -23,14 +23,19 @@ public class BrokerAnalysis implements CommandLineRunner {
 		logger.info("Confluent Log Analysis Start");
 		
 		String logFilePath = args[0];
+		
+		String startdate = args[1];
+		
+//		if (args[1])
+		
 		String defaultFileName = "confluent_report.log";
-		this.makeReport(defaultFileName, logFilePath);
+		this.makeReport(defaultFileName, logFilePath, startdate);
 		this.getFinalFile(defaultFileName);
-
+		
 		logger.info("Complete!!");
 	}
 	
-	public void makeReport(String defaultFileName, String logFilePath) {
+	public void makeReport(String defaultFileName, String logFilePath, String startdate) {
 		LogProcessing logProcessiong = new LogProcessing(); 
 		
 		logProcessiong.setReportFileName(defaultFileName);
@@ -38,7 +43,7 @@ public class BrokerAnalysis implements CommandLineRunner {
 		logProcessiong.writeLog("*".repeat(160)+ "\n");
 		logProcessiong.writeLog(" ".repeat(10) + this.getTodayString() + " ".repeat(10) + "Confluent Monthly Log Analysis Report\n");
 		logProcessiong.writeLog("*".repeat(160)+ "\n\r");
-		logProcessiong.analysis(logFilePath);
+		logProcessiong.analysis(logFilePath, startdate);
 		
 		this.genDesc(logProcessiong);
 	}

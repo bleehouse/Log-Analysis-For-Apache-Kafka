@@ -10,7 +10,7 @@
 	</parent>
 	<groupId>com.gtg</groupId>
 	<artifactId>maintenance</artifactId>
-	<version>0.0.2-SNAPSHOT</version>
+	<version>0.0.3-SNAPSHOT</version>
 	<name>demo</name>
 	<description>maintenanceproject for Spring Boot</description>
 	<properties>

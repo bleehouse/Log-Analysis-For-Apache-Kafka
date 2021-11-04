@@ -85,8 +85,6 @@ public class LogProcessing {
 		try {
 
 			DateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
-//			String firstStr = "2021-03-05 08:31:04";
-			
 			startdate = startdate + " 00:00:00";
 			
 			reader = new BufferedReader(new FileReader(logFilePath));
@@ -95,16 +93,13 @@ public class LogProcessing {
 			writeLog( "\n["+ logFilePath + "] Analysis\n");
 			
 			int cnt = 0;
-
 			List<Pattern> pList =  initPatternList();
-			
 			while (line != null) {
 				
 					for (Pattern pObj : pList) { 		      
 						if(line.indexOf(pObj.getPattern())>-1) {
 							
 							String secondStr = line.substring(1, 20);
-
 							boolean before = false;
 							
 							if (isValidDate(secondStr)) {
@@ -134,23 +129,21 @@ public class LogProcessing {
 				writeLog(" ".repeat(21)+"N/A");
 			} else {
 				writeLog("-".repeat(80)+"\n");
-	
 				int pNo = 0;
 				
 				for (Pattern pObj : pList) { 	
 					pNo ++;
 					writeLog( " Pattern" + pNo + ": " + pObj.getCnt()); 
 				}
+
 				writeLog("\n");
 				writeLog("-".repeat(80));
-				
 			}
 			
 			reader.close();
 		} catch (IOException e) {
 			e.printStackTrace();
 		} catch (Exception e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		return rtnStr;

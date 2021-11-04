@@ -9,17 +9,12 @@ import java.io.IOException;
 import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
-import java.time.LocalDate;
-import java.time.format.DateTimeFormatter;
-import java.time.format.DateTimeParseException;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
-
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import com.gtg.tool.runner.BrokerAnalysis;
 
 public class LogProcessing {
 
@@ -37,13 +32,14 @@ public class LogProcessing {
 
 	public static List<Pattern> initPatternList(){
 	    String[] patternArray;
-	    patternArray = new String [6];		
+	    patternArray = new String [7];		
 	    patternArray[0] = "Starting controlled shutdown";
 		patternArray[1] = "Fatal error";
 		patternArray[2] = "Attempt to heartbeat failed since group is rebalancing";
 		patternArray[3] = "elected as controller instead of broker";
-		patternArray[4] = "java.net.ConnectException: Connection refused (Connection refused)";
-		patternArray[5] = "ERROR Unexpected exception causing shutdown";	    
+		patternArray[4] = "Could not find offset index file corresponding to log file";
+		patternArray[5] = "WARN Cannot open channel to";
+		patternArray[6] = "ERROR Unexpected exception causing shutdown";	    
 	    
 		List<Pattern> pList = new ArrayList<>(patternArray.length);
 		

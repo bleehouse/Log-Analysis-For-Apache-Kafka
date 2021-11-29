@@ -58,9 +58,9 @@ public class BrokerAnalysis implements CommandLineRunner {
 	    descArray[1]  = "[B] Pattern2 : \"Fatal error\""+ "\n";
 	    descArray[2]  = "[B] Pattern3 : \"Attempt to heartbeat failed since group is rebalancing\""+ "\n";
 	    descArray[3]  = "[B] Pattern4 : \"elected as controller instead of broker\""+ "\n";
-	    descArray[4]  = "[B] Pattern4 : \"Could not find offset index file corresponding to log file\""+ "\n";
-	    descArray[5]  = "[Z] Pattern5 : \"WARN Cannot open channel to\""+ "\n";
-	    descArray[6]  = "[Z] Pattern6 : \"ERROR Unexpected exception causing shutdown\""+ "\n";
+	    descArray[4]  = "[B] Pattern5 : \"Could not find offset index file corresponding to log file\""+ "\n";
+	    descArray[5]  = "[Z] Pattern6 : \"WARN Cannot open channel to\""+ "\n";
+	    descArray[6]  = "[Z] Pattern7 : \"ERROR Unexpected exception causing shutdown\""+ "\n";
 		
 		for(String desc:descArray){
 			logProcessiong.writeLog(desc);

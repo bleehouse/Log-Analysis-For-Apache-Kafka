@@ -1,0 +1,56 @@
+patterns:
+  kafka:
+    name: "Kafka/Confluent Patterns"
+    patterns:
+      - pattern: "Starting controlled shutdown"
+        severity: "INFO"
+        category: "BROKER"
+        description: "Broker shutdown initiated"
+      - pattern: "Fatal error"
+        severity: "FATAL"
+        category: "BROKER"
+        description: "Fatal error occurred"
+      - pattern: "Attempt to heartbeat failed since group is rebalancing"
+        severity: "WARN"
+        category: "BROKER"
+        description: "Consumer group rebalancing issue"
+      - pattern: "elected as controller instead of broker"
+        severity: "INFO"
+        category: "BROKER"
+        description: "Controller election"
+      - pattern: "Could not find offset index file corresponding to log file"
+        severity: "ERROR"
+        category: "BROKER"
+        description: "Missing offset index file"
+      - pattern: "WARN Cannot open channel to"
+        severity: "WARN"
+        category: "ZOOKEEPER"
+        description: "Zookeeper connection issue"
+      - pattern: "ERROR Unexpected exception causing shutdown"
+        severity: "ERROR"
+        category: "ZOOKEEPER"
+        description: "Unexpected shutdown"
+
+  apache:
+    name: "Apache HTTP Server Patterns"
+    patterns:
+      - pattern: "\\[error\\]"
+        severity: "ERROR"
+        category: "HTTP"
+        description: "HTTP server error"
+      - pattern: "\\[warn\\]"
+        severity: "WARN"
+        category: "HTTP"
+        description: "HTTP server warning"
+
+dateFormats:
+  - "yyyy-MM-dd HH:mm:ss"
+  - "yyyy-MM-dd HH:mm:ss,SSS"
+  - "MMM dd HH:mm:ss"
+  - "yyyy/MM/dd HH:mm:ss"
+  - "dd/MMM/yyyy:HH:mm:ss Z"
+
+outputFormats:
+  - "TEXT"
+  - "JSON"
+  - "CSV"

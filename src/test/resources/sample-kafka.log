@@ -1,0 +1,8 @@
+[2024-01-15 10:30:15,123] INFO Starting controlled shutdown (kafka.server.KafkaServer)
+[2024-01-15 10:30:16,456] WARN Cannot open channel to broker-2 (org.apache.kafka.clients.NetworkClient)
+[2024-01-15 10:30:17,789] ERROR Fatal error during startup (kafka.server.KafkaServer)
+[2024-01-15 10:30:18,012] INFO Normal operation message (kafka.server.KafkaServer)
+[2024-01-15 10:30:19,345] WARN Attempt to heartbeat failed since group is rebalancing (org.apache.kafka.clients.consumer.internals.AbstractCoordinator)
+[2024-01-15 10:30:20,678] INFO Broker 1 elected as controller instead of broker 0 (kafka.controller.KafkaController)
+[2024-01-15 10:30:21,901] ERROR Could not find offset index file corresponding to log file (kafka.log.LogManager)
+[2024-01-15 10:30:22,234] ERROR Unexpected exception causing shutdown (org.apache.zookeeper.server.ZooKeeperServer)

@@ -1,8 +1,8 @@
-package com.gtg.tool.output.impl;
+package com.bleehouse.tool.output.impl;
 
-import com.gtg.tool.model.LogEntry;
-import com.gtg.tool.model.ParseResult;
-import com.gtg.tool.output.OutputFormatter;
+import com.bleehouse.tool.model.LogEntry;
+import com.bleehouse.tool.model.ParseResult;
+import com.bleehouse.tool.output.OutputFormatter;
 import org.springframework.stereotype.Component;
 
 import java.time.LocalDateTime;

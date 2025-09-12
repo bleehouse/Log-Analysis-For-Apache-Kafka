@@ -1,4 +1,4 @@
-package com.gtg.tool.config;
+package com.bleehouse.tool.config;
 
 import java.util.List;
 import java.util.Map;

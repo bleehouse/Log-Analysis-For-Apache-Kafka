@@ -1,7 +1,7 @@
-package com.gtg.tool.parser;
+package com.bleehouse.tool.parser;
 
-import com.gtg.tool.model.LogEntry;
-import com.gtg.tool.model.ParseResult;
+import com.bleehouse.tool.model.LogEntry;
+import com.bleehouse.tool.model.ParseResult;
 
 import java.io.InputStream;
 import java.time.LocalDateTime;

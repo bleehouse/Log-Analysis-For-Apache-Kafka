@@ -1,4 +1,4 @@
-package com.gtg.tool.file;
+package com.bleehouse.tool.file;
 
 import java.io.BufferedReader;
 import java.io.BufferedWriter;

@@ -1,13 +1,13 @@
-package com.gtg.tool.output.impl;
+package com.bleehouse.tool.output.impl;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.SerializationFeature;
-import com.fasterxml.jackson.datatype.jsr310.JavaTimeModule;
-import com.gtg.tool.model.ParseResult;
-import com.gtg.tool.output.OutputFormatter;
+import com.bleehouse.tool.model.ParseResult;
+import com.bleehouse.tool.output.OutputFormatter;
 import org.springframework.stereotype.Component;
 
 import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -19,9 +19,7 @@ public class JsonOutputFormatter implements OutputFormatter {
     
     public JsonOutputFormatter() {
         this.objectMapper = new ObjectMapper();
-        this.objectMapper.registerModule(new JavaTimeModule());
         this.objectMapper.enable(SerializationFeature.INDENT_OUTPUT);
-        this.objectMapper.disable(SerializationFeature.WRITE_DATES_AS_TIMESTAMPS);
     }
     
     @Override

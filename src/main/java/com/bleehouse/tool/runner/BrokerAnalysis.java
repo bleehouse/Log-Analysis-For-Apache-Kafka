@@ -1,8 +1,8 @@
-package com.gtg.tool.runner;
+package com.bleehouse.tool.runner;
 
-import com.gtg.tool.model.ParseResult;
-import com.gtg.tool.service.LogAnalysisService;
-import com.gtg.tool.service.ReportService;
+import com.bleehouse.tool.model.ParseResult;
+import com.bleehouse.tool.service.LogAnalysisService;
+import com.bleehouse.tool.service.ReportService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;

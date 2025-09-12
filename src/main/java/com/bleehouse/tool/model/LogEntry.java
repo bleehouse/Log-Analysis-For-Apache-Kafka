@@ -1,4 +1,4 @@
-package com.gtg.tool.model;
+package com.bleehouse.tool.model;
 
 import java.time.LocalDateTime;
 

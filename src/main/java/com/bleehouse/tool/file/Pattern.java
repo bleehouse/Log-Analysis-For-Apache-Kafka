@@ -1,4 +1,4 @@
-package com.gtg.tool.file;
+package com.bleehouse.tool.file;
 
 public class Pattern {
 
@@ -50,6 +50,3 @@ public class Pattern {
 	}
 
 }
-
-
-

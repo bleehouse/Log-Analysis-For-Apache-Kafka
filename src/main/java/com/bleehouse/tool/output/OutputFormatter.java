@@ -1,6 +1,6 @@
-package com.gtg.tool.output;
+package com.bleehouse.tool.output;
 
-import com.gtg.tool.model.ParseResult;
+import com.bleehouse.tool.model.ParseResult;
 
 import java.util.List;
 
